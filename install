@@ -1,7 +1,16 @@
 #!/bin/bash
-
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-ln -s $BASEDIR/.i3 ~/.i3 
+echo "Starting instalation in user home directory ($HOME)..."
 
+ln -sf $BASEDIR/.vim ~/.vim
+ln -sf $BASEDIR/.vimrc ~/.vimrc
+ln -sf $BASEDIR/.i3 ~/.i3
+ln -sf $BASEDIR/.gitconfig ~/.gitconfig
 
+# Initialize vim settings
+[ ! -d "$BASEDIR/.vim/bundle/Vundle.vim" ] && \
+  git clone https://github.com/VundleVim/Vundle.vim.git $BASEDIR/.vim/bundle/Vundle.vim && \
+  vim +PluginInstall +qall 
+
+echo "Everything installed... Bye!"
