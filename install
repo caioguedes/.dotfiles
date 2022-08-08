@@ -10,6 +10,7 @@ ln -sn $BASEDIR/.gitconfig ~/.gitconfig
 
 # Initialize vim settings
 [ ! -d "$BASEDIR/.vim/bundle/Vundle.vim" ] && \
+  mkdir -p $BASEDIR/.vim/bundle
   git clone https://github.com/VundleVim/Vundle.vim.git $BASEDIR/.vim/bundle/Vundle.vim && \
   vim +PluginInstall +qall 
 
